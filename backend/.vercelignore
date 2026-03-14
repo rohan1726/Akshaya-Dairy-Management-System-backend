@@ -1,0 +1,26 @@
+# Tests and dev-only files (not needed for Vercel run)
+tests/
+**/*.test.ts
+**/*.spec.ts
+**/__tests__/
+coverage/
+.nyc_output/
+jest.config.js
+*.test.js
+*.spec.js
+
+# Dev tooling
+nodemon.json
+.vscode/
+.idea/
+
+# Logs (do not deploy)
+src/logs/
+*.log
+
+# Local env (set in Vercel dashboard)
+.env
+.env.*
+!.env.example
+
+# Optional: keep node_modules installed by Vercel; do not ignore

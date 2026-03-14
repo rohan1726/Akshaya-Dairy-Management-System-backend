@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akshaya Dairy API</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    h1 { margin-bottom: 0.5rem; }
+    .links { margin: 1rem 0; }
+    .links a { margin-right: 0.75rem; color: #2563eb; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .section { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+    .section h2 { font-size: 1rem; color: #374151; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Akshaya Dairy API</h1>
+  <p>Backend for Akshaya Dairy Management System.</p>
+  <div class="links">
+    <a href="/health">Health</a>
+    <a href="/api-docs">API Docs</a>
+  </div>
+  <div class="section">
+    <h2>Apps</h2>
+    <p id="app-links">Loading…</p>
+    <p style="font-size: 0.875rem; color: #6b7280;">Set <code>ADMIN_APP_URL</code> and <code>DRIVER_APP_URL</code> in the backend Vercel project so these links work.</p>
+  </div>
+  <script>
+    (function() {
+      var el = document.getElementById('app-links');
+      fetch('/app-urls').then(function(r) { return r.json(); }).then(function(d) {
+        if (d.success && (d.adminUrl || d.driverUrl)) {
+          var parts = [];
+          if (d.adminUrl) parts.push('<a href="' + d.adminUrl + '" target="_blank" rel="noopener">Admin Panel</a>');
+          if (d.driverUrl) parts.push('<a href="' + d.driverUrl + '" target="_blank" rel="noopener">Driver / Center Panel</a>');
+          el.innerHTML = parts.join(' · ');
+        } else {
+          el.innerHTML = 'Set ADMIN_APP_URL and DRIVER_APP_URL in backend Environment Variables (Vercel).';
+        }
+      }).catch(function() {
+        el.innerHTML = 'Admin Panel and Driver / Center Panel — deploy frontends and set ADMIN_APP_URL, DRIVER_APP_URL in backend env.';
+      });
+    })();
+  </script>
+</body>
+</html>
