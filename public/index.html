@@ -24,7 +24,7 @@
   <div class="section">
     <h2>Apps</h2>
     <p id="app-links">Loading…</p>
-    <p style="font-size: 0.875rem; color: #6b7280;">Set <code>ADMIN_APP_URL</code> and <code>DRIVER_APP_URL</code> in the backend Vercel project so these links work.</p>
+    <p style="font-size: 0.875rem; color: #6b7280;">Set <code>ADMIN_APP_URL</code> and <code>DRIVER_APP_URL</code> in Vercel env so these links work.</p>
   </div>
   <script>
     (function() {
@@ -36,10 +36,10 @@
           if (d.driverUrl) parts.push('<a href="' + d.driverUrl + '" target="_blank" rel="noopener">Driver / Center Panel</a>');
           el.innerHTML = parts.join(' · ');
         } else {
-          el.innerHTML = 'Set ADMIN_APP_URL and DRIVER_APP_URL in backend Environment Variables (Vercel).';
+          el.innerHTML = 'Set ADMIN_APP_URL and DRIVER_APP_URL in Vercel Environment Variables.';
         }
       }).catch(function() {
-        el.innerHTML = 'Admin Panel and Driver / Center Panel — deploy frontends and set ADMIN_APP_URL, DRIVER_APP_URL in backend env.';
+        el.innerHTML = 'Set ADMIN_APP_URL and DRIVER_APP_URL in Vercel for Admin and Driver links.';
       });
     })();
   </script>

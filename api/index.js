@@ -1,12 +1,10 @@
 /**
- * Vercel serverless entry (repo root).
- * Forwards to the built backend Express app.
+ * Vercel serverless entry. Runs when Vercel Root Directory = backend.
  */
 let app;
 try {
-  app = require('../backend/dist/app').default;
+  app = require('../dist/app').default;
 } catch (err) {
-  // If the app fails to load (e.g. missing build, env), respond with 500 so the function doesn't crash silently
   app = (req, res) => {
     res.status(500).json({
       success: false,
